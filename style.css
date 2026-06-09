@@ -309,18 +309,7 @@ img { max-width: 100%; display: block; }
 
 /* Decorative gold ring offset behind the circular portrait */
 .hero__portrait::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  max-width: 360px;
-  aspect-ratio: 1;
-  border: 1px solid var(--gold-soft);
-  border-radius: 50%;
-  top: 18px;
-  left: calc(50% + 18px);
-  transform: translateX(-50%);
-  z-index: 0;
-  opacity: 0.4;
+  content: none;
 }
 
 @media (max-width: 860px) {
