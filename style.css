@@ -277,20 +277,21 @@ img { max-width: 100%; display: block; }
 .hero__portrait-frame {
   position: relative;
   width: 100%;
-  max-width: 380px;
-  aspect-ratio: 5 / 4;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
   background: var(--bg-elev);
   overflow: hidden;
-  border-radius: 6px;
-  border: 1px solid var(--gold-soft);
+  border-radius: 50%;
+  border: 3px solid var(--gold);
   z-index: 1;
-  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.6);
+  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.6), 0 0 0 1px var(--gold-soft);
 }
 
 .hero__portrait-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 28%;
 }
 
 .hero__portrait-placeholder {
@@ -306,20 +307,20 @@ img { max-width: 100%; display: block; }
   color: var(--muted);
 }
 
-/* Decorative gold ring behind portrait */
+/* Decorative gold ring offset behind the circular portrait */
 .hero__portrait::before {
   content: '';
   position: absolute;
-  width: 90%;
-  max-width: 340px;
+  width: 100%;
+  max-width: 360px;
   aspect-ratio: 1;
   border: 1px solid var(--gold-soft);
   border-radius: 50%;
-  top: -8%;
-  left: 50%;
+  top: 18px;
+  left: calc(50% + 18px);
   transform: translateX(-50%);
   z-index: 0;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 @media (max-width: 860px) {
@@ -328,7 +329,7 @@ img { max-width: 100%; display: block; }
     gap: 3rem;
   }
   .hero__portrait { order: -1; }
-  .hero__portrait-frame { max-width: 320px; }
+  .hero__portrait-frame { max-width: 280px; }
   .hero__portrait::before { max-width: 280px; }
 }
 
@@ -568,16 +569,15 @@ img { max-width: 100%; display: block; }
   font-size: clamp(1.5rem, 2.4vw, 2rem);
 }
 
-/* Secondary project — single-column, more compact */
+/* Secondary project — two-column with slide preview */
 .project--secondary {
-  grid-template-columns: 1fr;
   padding-top: 3rem;
   margin-top: 2rem;
   border-top: 1px solid var(--rule);
 }
 
 .project__secondary-content {
-  max-width: 900px;
+  max-width: 720px;
 }
 
 .project__specs--compact {
@@ -587,6 +587,126 @@ img { max-width: 100%; display: block; }
 .project__artifacts--compact {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
+}
+
+/* Trauma-Informed slide preview — mirrors deck cover slide */
+.project__visual-secondary {
+  align-self: start;
+}
+
+.trauma-slide-preview {
+  position: relative;
+  background: #2C3E3A;
+  border: 1px solid #84B59F;
+  padding: 1.8rem 1.6rem;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  box-shadow:
+    0 0 0 12px var(--bg-elev),
+    0 0 0 13px var(--rule),
+    0 20px 50px -20px rgba(0,0,0,0.6);
+}
+
+.trauma-slide-preview__decoration {
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background: rgba(132, 181, 159, 0.2);
+  pointer-events: none;
+}
+
+.trauma-slide-preview__decoration--2 {
+  top: -1rem;
+  right: -1rem;
+  width: 5.5rem;
+  height: 5.5rem;
+  background: rgba(90, 139, 117, 0.3);
+}
+
+.trauma-slide-preview__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.trauma-slide-preview__eyebrow {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #84B59F;
+  margin: 0 0 0.7rem;
+}
+
+.trauma-slide-preview__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #F5F1E8;
+  margin: 0;
+}
+
+.trauma-slide-preview__title em {
+  font-style: italic;
+  color: #84B59F;
+  font-weight: 300;
+}
+
+.trauma-slide-preview__subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #F5F1E8;
+  margin: 0.5rem 0 0;
+}
+
+.trauma-slide-preview__divider {
+  width: 1.5rem;
+  height: 2px;
+  background: #84B59F;
+  margin: 0.7rem 0 0.9rem;
+}
+
+.trauma-slide-preview__meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.trauma-slide-preview__meta > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.trauma-slide-preview__label {
+  font-family: var(--sans);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #84B59F;
+}
+
+.trauma-slide-preview__value {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: #F5F1E8;
+}
+
+@media (max-width: 800px) {
+  .project--secondary {
+    grid-template-columns: 1fr;
+  }
 }
 
 .project__brief {
